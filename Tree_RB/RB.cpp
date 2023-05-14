@@ -1,8 +1,10 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
 #include "RBTree.h"
 using namespace std;
 
 const int dataset = 10;
+const int N = 1e6;
 
 ofstream fout;
 ifstream fin;
@@ -13,11 +15,8 @@ int main(){
     for (int i = 0; i < dataset; i++){
 	    RBTree<int> bst;        
         fin.open("../Input/input"+std::to_string(i)+".txt");
-        for (int j = 0; j < 1e6; j++){
-            int x; 
-            fin >> x;
-            bst.insertValue(x);
-        }
+        int x; 
+        while(fin >> x) bst.insertValue(x);
         fout << "Testcase " << i << ": " << bst.maxDepth() << "\n";
         fin.close();
     }
