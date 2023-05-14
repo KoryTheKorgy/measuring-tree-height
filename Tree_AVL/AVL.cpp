@@ -10,19 +10,20 @@ const int N = 10;
 ifstream fin;
 ofstream fout;
 
-signed main() {
+signed main(){
+    ios::sync_with_stdio(0), cin.tie(nullptr);
+    fout.open("output.txt");
     for (int i = 0; i < dataset; i++){
 	    AVLTree<int> bst;
-        fout.open("Output/output"+std::to_string(i)+".txt");
         fin.open("../Input/input"+std::to_string(i)+".txt");
         for (int j = 0; j < 1e6; j++){
-            int x; 
+            int x;
             fin >> x;
             bst.insert(x);
         }
-        cout << bst.maxDepth();
+        fout << "Testcase " << i << ": " << bst.maxDepth() << "\n";
         fin.close();
-        fout.close();
     }
+    fout.close();
 	return 0;
 }
